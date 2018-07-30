@@ -9,6 +9,7 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
+      //break on ...
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
     function makeGreen() {
       const p = document.querySelector('p');
@@ -16,17 +17,44 @@
       p.style.fontSize = '50px';
     }
     // Regular
+    console.log('Hello, I\'m regular');
     // Interpolated
+    console.log('Hi, I\'m old scool %s string!', 'interpolated');
     // Styled
+    console.log('%c I am styled', 'font-size: 50px; background:pink;');
     // warning!
+    console.warn('Ruh roh raggy...');
     // Error :|
+    console.error('All your base are belong to us!');
     // Info
+    console.error('Useful information here.');
     // Testing
+    console.assert(1 === 2, '1 isn\'t eq to 2 ya galoot'); //use for test assertions on the log
     // clearing
+    // console.clear() //clear the console
     // Viewing DOM Elements
+    console.log(document.querySelector('p')); //shows element
+    console.dir(document.querySelector('p')); //shows properties and other things assigned
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`); //can alternatively use console.group() to avoid collapsing logs
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    })
     // counting
+    console.count('bill'); // shows how many times this exact thing has logged
+    console.count('bill');
+    console.count('bill');
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/clarkgh')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
   </script>
 </body>
 </html>
